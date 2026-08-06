@@ -1,7 +1,7 @@
 import {useState,useRef,useEffect} from 'react'
 import { Link } from 'react-router-dom';
-import botaoImg from "./imagens/Botao.png";
-import botaoImgPress from "./imagens/Botaopressionado.png";
+import botaoImg from "./imagens/botao.png";
+import botaoImgPress from "./imagens/botaopressionado.png";
 import "../CSS/indexBotao.css";
 function Botao() {
   const [PoderNavegador, setPoder] = useState("???"); // NOME DO PODER
