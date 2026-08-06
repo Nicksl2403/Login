@@ -21,6 +21,8 @@ function Painel() {
       <button style={{
         position: "relative",
         marginLeft:"1820px",
+        top: 50,
+        right: 50,
         zIndex: 10,
         backgroundColor: "red",
         width: "100px",
@@ -32,9 +34,8 @@ function Painel() {
     <div className='painel'>
       <div className="box" style ={{
       top: 9,
-      left: 10,
       position:"absolute",
-      width: "200px",
+      width: "100vw",
       height: "98vh",
       color: "black",
       display:"flex",
@@ -42,7 +43,7 @@ function Painel() {
       alignItems:"center",
       justifyContent:"center",
       backgroundColor: "black",
-      borderRadius:"20px",
+      borderRadius:"50px",
       boxShadow: 
       ` 0 0 8px #00ff88,
       0 0 20px #00ff88,
