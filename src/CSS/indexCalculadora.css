@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-size: 101%;
+}
+.calculadora {
+  background: radial-gradient(circle, rgb(93, 50, 124), rgb(133, 57, 148));
+  background-size: 101%;
+  min-height: 100vh;
+  width: 100%;
+}
