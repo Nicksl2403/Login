@@ -22,9 +22,11 @@
       if(evento.key == "Enter") {
          if(String(nomeInput) in senhas) {
             if((String(nomeInput)) === "ADM") {
-              setLogado(true); navigate("/Painel");
+              setLogado(true); 
+              navigate("/Painel");
             } else if(Number(senhaInput) === senhas[nomeInput]) {
-               setLogado(true); navigate("/Painel");
+               setLogado(true); 
+               navigate("/Painel");
               } else {
                 let alerta = alert("Senha incorreta");
               }
@@ -92,9 +94,11 @@
         <button onMouseEnter={() => setPassouMouseBotao(true)}onMouseLeave={() => setPassouMouseBotao(false)} onClick={() => {
           if(String(nomeInput) in senhas) {
             if((String(nomeInput)) === "ADM") {
-              setLogado(true); navigate("/Painel");
+              setLogado(true); 
+              navigate("/Painel");
             } else if(Number(senhaInput) === senhas[nomeInput]) {
-               setLogado(true); navigate("/Painel");
+               setLogado(true); 
+               navigate("/Painel");
               } else {
                 let alerta = alert("Senha incorreta");
               }

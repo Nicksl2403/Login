@@ -5,5 +5,6 @@ const senhas = {
     "Felipe": 101325,
     "Rodrigo": 101325,
     "Daniele": 101325,
+    "ADM": "?",
 }
 export default senhas;
