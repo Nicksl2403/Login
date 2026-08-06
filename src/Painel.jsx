@@ -1,7 +1,7 @@
 import { useEffect, useState, } from 'react'
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import './CSS/indexPainel.css'
-
+import logo from "./Jogos/imagens/logoEmpresa.png"
 function Painel() {
   const location = useLocation();
   const [site, setSite] = useState("");
@@ -14,11 +14,14 @@ function Painel() {
     <>
       <>
         <div style={{
-        backgroundSize: "cover",
-        backgroundColor: "rgb(0, 119, 60)",
+        display:"flex",
+        backgroundColor: "rgb(0, 0, 0)",
       }}>
       <Link to="/Login">
       <button style={{
+        position: "relative",
+        marginLeft:"1820px",
+        zIndex: 10,
         backgroundColor: "red",
         width: "100px",
         height: "30px",
@@ -28,14 +31,17 @@ function Painel() {
       </div>
     <div className='painel'>
       <div className="box" style ={{
+      top: 9,
+      left: 10,
+      position:"absolute",
       width: "200px",
-      height: "500px",
+      height: "98vh",
       color: "black",
-      backgroundColor: "black",
       display:"flex",
       flexDirection:"column",
       alignItems:"center",
       justifyContent:"center",
+      backgroundColor: "black",
       borderRadius:"20px",
       boxShadow: 
       ` 0 0 8px #00ff88,

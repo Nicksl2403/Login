@@ -1,4 +1,4 @@
-  import { useState, useEffect, useRef } from 'react'
+  import { useState, useEffect, useRef, use } from 'react'
   import { BrowserRouter, Link, Route, Routes, useLocation, Navigate, useNavigate, useResolvedPath, useAsyncError } from 'react-router-dom';
   import './CSS/indexLogin.css'
   import Calculadora from './Jogos/calculadora.jsx';
@@ -12,35 +12,11 @@
     const [passouMouseBotao, setPassouMouseBotao] = useState(false);
     const [nomeInput, setNomeInput] = useState("");
     const [senhaInput, setSenhaInput] = useState("");
-    const [passouMouseNome, setPassouMouseNome] = useState("");
-    const[passouMouseSenha, setPassouMouseSenha] = useState("");
+    const [passouMouseNome, setPassouMouseNome] = useState();
+    const [passouMouseSenha, setPassouMouseSenha] = useState();
     const [tecla, setTecla] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
-     useEffect(() => {
-    function teclaApertada(evento) {
-      if(evento.key == "Enter") {
-         if(String(nomeInput) in senhas) {
-            if((String(nomeInput)) === "ADM") {
-              setLogado(true); 
-              navigate("/Painel");
-            } else if(Number(senhaInput) === senhas[nomeInput]) {
-               setLogado(true); 
-               navigate("/Painel");
-              } else {
-                let alerta = alert("Senha incorreta");
-              }
-            } else {
-               let alerta = alert("Usuario nao encontrado");
-            }
-      }
-  
-  }
-  window.addEventListener("keydown", teclaApertada);
-    return () => {
-    window.removeEventListener("keydown", teclaApertada);
-  };
-}, [nomeInput,senhaInput]);
     return (
         <>
         {location.pathname === "/Login" && !logado && ( 
@@ -52,7 +28,7 @@
           justifyContent:"center",
           alignItems:"center",
         }}> <div className="box" style ={{
-      width: "300px",
+      width: "330px",
       height: "300px",
       color: "white",
       display:"flex",
@@ -71,7 +47,33 @@
           marginTop:"15px",
         }}></div>
         <img src={Logo} width={200} height={80} />
-        <input type="text" placeholder="Digite o seu usuario" value={nomeInput} onChange={(evento) => setNomeInput(evento.target.value)} onMouseEnter={() => {setPassouMouseNome(true)}}onMouseLeave={() => {setPassouMouseNome(false)}}style={{
+    
+        <form onSubmit={(e) => {
+            e.preventDefault();
+
+    if (String(nomeInput) === "ADM") {
+    setLogado(true);
+    navigate("/Painel");
+    } else {
+    if (String(nomeInput) in senhas) {
+      if (Number(senhaInput) === senhas[nomeInput]) {
+      setLogado(true);
+      navigate("/Painel");
+      } else {
+      alert("Senha incorreta");
+      } 
+       } else {
+        alert("Usuario nao encontrado");
+       }   
+        }}}
+        style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: "10px"
+      }}>
+        <input onChange={(e) => setNomeInput(e.target.value)} onMouseEnter={() => setPassouMouseNome(true)} onMouseLeave={() => setPassouMouseNome(false)} type="text" placeholder="Digite Seu Usuário"
+        style={{ 
           background:"black",
           color:"white",
           textAlign:"center",
@@ -81,7 +83,8 @@
           width:"220px",
           outline: "none"
         }}></input>
-          <input type="password" placeholder="Digite sua senha" value={senhaInput} onChange={(evento) => {setSenhaInput(evento.target.value)}} onMouseEnter={() => {setPassouMouseSenha(true)}} onMouseLeave={() => {setPassouMouseSenha(false)}} style={{
+        <input onChange={(e) => setSenhaInput(e.target.value)} onMouseEnter={() => setPassouMouseSenha(true)} onMouseLeave={() => setPassouMouseSenha(false)} type="password" placeholder="Digite Sua Senha"
+        style={{
           background:"black",
           color:"white",
           textAlign:"center",
@@ -89,23 +92,10 @@
           marginTop:"0px",
           height:"30px",
           width:"220px",
-          outline: "none"
+          outline:"none",
         }}></input>
-        <button onMouseEnter={() => setPassouMouseBotao(true)}onMouseLeave={() => setPassouMouseBotao(false)} onClick={() => {
-          if(String(nomeInput) in senhas) {
-            if((String(nomeInput)) === "ADM") {
-              setLogado(true); 
-              navigate("/Painel");
-            } else if(Number(senhaInput) === senhas[nomeInput]) {
-               setLogado(true); 
-               navigate("/Painel");
-              } else {
-                let alerta = alert("Senha incorreta");
-              }
-            } else {
-               let alerta = alert("Usuario nao encontrado");
-            }
-          }} style={{
+        <button type="submit" onMouseEnter={() => setPassouMouseBotao(true)}onMouseLeave={() => setPassouMouseBotao(false)}
+          style={{
           width:"150px",
           height:"50px",
           background: "transparent",
@@ -114,6 +104,7 @@
           border: passouMouseBotao ? "2px solid seagreen" : "2px solid transparent",
           color:"white",
         }}><b>Entrar</b></button>
+        </form>
         </div>
         </div>
         </div>
