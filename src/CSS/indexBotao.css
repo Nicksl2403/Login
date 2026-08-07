@@ -1,10 +1,9 @@
 body {
     margin: 0;
-    background-color: rgb(34, 34, 34);
     background-size: 101%;
     overflow: hidden;
 }
-.btnBotao.ativo {
+.btnBotao:active {
     transform: scale(0.8);
-    transition: 0.1s;
+    transition: 0.01s;
 }
