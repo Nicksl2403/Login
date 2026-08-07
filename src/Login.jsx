@@ -9,11 +9,8 @@
   import senhas from "./.gitignore/senhas.jsx"
   function Login() {
     const [logado, setLogado] = useState(false);
-    const [passouMouseBotao, setPassouMouseBotao] = useState(false);
     const [nomeInput, setNomeInput] = useState("");
     const [senhaInput, setSenhaInput] = useState("");
-    const [passouMouseNome, setPassouMouseNome] = useState();
-    const [passouMouseSenha, setPassouMouseSenha] = useState();
     const [tecla, setTecla] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
@@ -29,25 +26,27 @@
           alignItems:"center",
         }}> <div className="box" style ={{
       width: "330px",
-      height: "300px",
-      color: "white",
+      height: "350px",
+      color: "black",
       display:"flex",
       flexDirection: "column",
       backgroundColor: "black",
       alignItems:"center",
+      justifyContent:"center",
       borderRadius:"20px",
       boxShadow: 
       ` 0 0 8px #00ff88,
       0 0 20px #00ff88,
       inset 0 0 40px rgba(23,250,144,0.6)
       `,
-      gap:"20px",
+      gap:"10px",
         }}> 
         <div style={{
           marginTop:"15px",
         }}></div>
-        <img src={Logo} width={200} height={80} />
-    
+        <Link to="https://grupocropfield.com.br/">
+        <img src={Logo} width={315} height={130} />
+        </Link>
         <form onSubmit={(e) => {
             e.preventDefault();
 
@@ -72,36 +71,33 @@
       alignItems: "center",
       gap: "10px"
       }}>
-        <input onChange={(e) => setNomeInput(e.target.value)} onMouseEnter={() => setPassouMouseNome(true)} onMouseLeave={() => setPassouMouseNome(false)} type="text" placeholder="Digite Seu Usuário"
+        <input className='input' onChange={(e) => setNomeInput(e.target.value)} type="text" placeholder="Digite Seu Usuário"
         style={{ 
           background:"black",
           color:"white",
           textAlign:"center",
-          border: passouMouseNome ? "2px solid seagreen" : "2px solid black",
           marginTop:"0px",
           height:"30px",
           width:"220px",
           outline: "none"
         }}></input>
-        <input onChange={(e) => setSenhaInput(e.target.value)} onMouseEnter={() => setPassouMouseSenha(true)} onMouseLeave={() => setPassouMouseSenha(false)} type="password" placeholder="Digite Sua Senha"
+        <input className='input' onChange={(e) => setSenhaInput(e.target.value)} type="password" placeholder="Digite Sua Senha"
         style={{
           background:"black",
           color:"white",
           textAlign:"center",
-          border: passouMouseSenha ? "2px solid seagreen" : "2px solid black",
           marginTop:"0px",
           height:"30px",
           width:"220px",
           outline:"none",
         }}></input>
-        <button type="submit" onMouseEnter={() => setPassouMouseBotao(true)}onMouseLeave={() => setPassouMouseBotao(false)}
+        <button className='input' type="submit" onMouseEnter={() => setPassouMouseBotao(true)}onMouseLeave={() => setPassouMouseBotao(false)}
           style={{
           width:"150px",
           height:"50px",
           background: "transparent",
           fontSize:"23px",
           background:"transparent",
-          border: passouMouseBotao ? "2px solid seagreen" : "2px solid transparent",
           color:"white",
         }}><b>Entrar</b></button>
         </form>

@@ -4,6 +4,7 @@ import botaoImg from "./imagens/botao.png";
 import botaoImgPress from "./imagens/botaopressionado.png";
 import "../CSS/indexBotao.css";
 function Botao() {
+  const [clicado , setClicado] = useState(false);
   const [PoderNavegador, setPoder] = useState("???"); // NOME DO PODER
   const [cliques, setCliques] = useState(0); // CLIQUES
   const [Cooldown, setCooldown] = useState (false); // COOLDOWN DAS HABILIDADES
@@ -68,7 +69,10 @@ function Botao() {
     gap: "5px",
   }}> 
     <h1><b>Cliques:{cliques}</b></h1> {/*Mostra e atualiza os cliques*/}
-    <button onClick = {() => {setCliques(c => { c + 1 * Multiplicador
+    <button className= {clicado ? "btnBotao ativo" : "btnBotao desativado"}   onClick = {() => {setCliques(c => { c + 1 * Multiplicador; setClicado(true);
+    setTimeout(() => {
+      setClicado(false);
+    }, 50);
     if(c + Multiplicador >= 10) {
       setPoder("Clique:10X")
     } else {
@@ -76,7 +80,6 @@ function Botao() {
     }
     return c + 1 * Multiplicador;
   }
-    
     ), cliques >= 9 && setPoder("Clique:10X"), cliques + 1 >= PrecoRenascer ? SetRenascer("Renascer") : SetRenascer("???"), cliques >= 499 || ACDESBLOQUEADO ? setHTMLAC("AutoClicker") : setHTMLAC("???");
     SetBotao(botaoImgPress)
       setTimeout(() => {

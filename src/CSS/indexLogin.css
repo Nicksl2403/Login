@@ -14,3 +14,14 @@ html, body {
     overflow: hidden;
     background-color: black;
 }
+.input {
+ border: 2px solid transparent;
+  transition: 0.3s;
+}
+.input:hover {
+  border: 2px solid #00ff88;
+  box-shadow: 
+     0 0 8px #00ff88,
+      0 0 20px #00ff88,
+      inset 0 0 40px rgba(23,250,144,0.6)
+}

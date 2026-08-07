@@ -90,6 +90,9 @@ useEffect(() => {
             return prev;
           }
         });
+        } else if (!jogo && evento.key === ",") {
+          setDisplay(prev => prev + ",");
+          setConta(prev => prev + ".");
         } else if (!jogo && (evento.key == "C" || evento.key == "c")) {
           setDisplay(""); 
           setConta("");
@@ -101,13 +104,13 @@ useEffect(() => {
           setDisplay(prev => prev + "+")
         } else if (!jogo && evento.key === "-"){
           setConta(prev => prev + "-");
-          setDisplay(prev => prev + "÷")
+          setDisplay(prev => prev + "-")
+        } else if (!jogo && evento.key === "/") {
+          setConta(prev => prev + "/");
+          setDisplay(prev => prev + "÷") 
         } else if (!jogo && botoes.includes(evento.key)) {
           setConta(prev => prev + String(evento.key));
           setDisplay(prev => prev + String(evento.key));
-        } else if (!jogo && evento.key === "/") {
-          setConta(prev => prev + "/");
-          setDisplay(prev => prev + "")
         }
       }
   }
@@ -117,15 +120,41 @@ useEffect(() => {
     };
   }, [n1,n2,index,jogo]);
     return (
-      <div className='calculadora'>
+       <div style={{
+      width: "100vw",
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "black"
+      }}>
+      <div className="box" style ={{
+      width: "99%",
+      height: "91%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "black",
+      borderRadius: "50px",
+      boxShadow: `
+        0 0 8px #00ff88,
+        0 0 20px #00ff88,
+        inset 0 0 40px rgba(23,250,144,0.6)
+      `,
+      gap: "10px"
+    }}>
       <>
       <Link to="/Painel">
-      <button style={{
+      {(!jogo) && (
+      <button className='btnBotao' style={{
         backgroundColor: "red",
-        width: "100px",
-        height: "30px",
+        width: "120px",
+        height: "120px",
+        borderRadius: "100%",
         border: "2px solid black"
       }}><b>Voltar</b></button>
+    )}
       </Link>
       <div style={{
         display: "flex",
@@ -144,6 +173,7 @@ useEffect(() => {
             color: "red",
             alignItems:"center",
             justifyItems:"center",
+            backgroundColor:"black",
           }}>
         <span><b>Nivel:{nivel}</b></span>
         <span><b></b>Tempo:{timer}s</span>
@@ -207,45 +237,45 @@ useEffect(() => {
           gap: "1px",
           marginTop:"50px",
         }}>
-            <div style={{
-          marginTop: "0px",
-          fontSize: "35px",
-          background: "black",
-          color: "black",
-          gridColumn: "1 / span 4",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color:"white",
-          letterSpacing:"5px"
-        }}
-          >{display || 0}</div>
+              <div style={{
+        marginTop: "0px",
+        fontSize: "35px",
+        background: "black",
+        color: "black",
+        gridColumn: "1 / span 4",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color:"white",
+        letterSpacing:"5px"
+      }}
+        >{display || 0}</div>
+        
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "7"); setConta(conta + "7")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>7</b></button>
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "8"); setConta(conta + "8")}} style ={{width: "100px",height: "100px",borderRadius:"",}}><b>8</b></button>
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "9"); setConta(conta + "9")}} style ={{width: "100px",height: "100px",borderRadius:"",}}><b>9</b></button>
+          
+          <button className='btnSinal' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "X" ); setConta(conta + "*")}} style ={{width: "100px",height: "100px",borderRadius:"",backgroundColor:"rgb(40, 38, 41)",alignItems:"center",justifyContent:"center"}}>×</button>
+          
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "4"); setConta(conta +"4")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>4</b></button>
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "5"); setConta(conta + "5")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>5</b></button> 
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "6"); setConta(conta + "6")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>6</b></button>
+          
+          <button className='btnSinal' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "-"); setConta(conta + "-")}} style ={{width: "100px",height: "100px",borderRadius:"",backgroundColor:"rgb(40, 38, 41)",alignItems:"center",justifyContent:"center",}}>−</button>
+          
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "1"); setConta(conta + "1")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>1</b></button>
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "2"); setConta(conta + "2")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>2</b></button>
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "3"); setConta(conta + "3")}} style ={{width: "100px",height: "100px",borderRadius:""}}><b>3</b></button>
 
-          <button onClick ={() => {setDisplay(display + "7"); setConta(conta + "7")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>7</b></button>
-          <button onClick ={() => {setDisplay(display + "8"); setConta(conta + "8")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>8</b></button>
-          <button onClick ={() => {setDisplay(display + "9"); setConta(conta + "9")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>9</b></button>
-          
-          <button onClick ={() => {setDisplay(display + "X" ); setConta(conta + "*")}} style ={{width: "100px",height: "100px",borderRadius:"15%",color:"white",backgroundColor:"rgb(40, 38, 41)",alignItems:"center",fontSize:"10vh",justifyContent:"center"}}>×</button>
-          
-          <button onClick ={() => {setDisplay(display + "4"); setConta(conta +"4")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>4</b></button>
-          <button onClick ={() => {setDisplay(display + "5"); setConta(conta + "5")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>5</b></button>
-          <button onClick ={() => {setDisplay(display + "6"); setConta(conta + "6")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>6</b></button>
-          
-          <button onClick ={() => {setDisplay(display + "-"); setConta(conta + "-")}} style ={{width: "100px",height: "100px",borderRadius:"15%",color:"white",backgroundColor:"rgb(40, 38, 41)",alignItems:"center",fontSize:"10vh",justifyContent:"center",}}>−</button>
-          
-          <button onClick ={() => {setDisplay(display + "1"); setConta(conta + "1")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>1</b></button>
-          <button onClick ={() => {setDisplay(display + "2"); setConta(conta + "2")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>2</b></button>
-          <button onClick ={() => {setDisplay(display + "3"); setConta(conta + "3")}} style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px"}}><b>3</b></button>
+          <button className='btnSinal' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "+"); setConta(conta + "+")}} style ={{width: "100px",height: "100px",borderRadius:"",backgroundColor:"rgb(40, 38, 41)",alignItems:"center",justifyContent:"center"}}>+</button>
 
-          <button onClick ={() => { setDisplay(display + "+"); setConta(conta + "+")}} style ={{width: "100px",height: "100px",borderRadius:"15%",color:"white",backgroundColor:"rgb(40, 38, 41)",alignItems:"center",fontSize:"10vh",justifyContent:"center"}}>+</button>
-
-          <button onClick ={() => {setDisplay(display + "0"); setConta(conta + "0")}}style={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"25px",gridColumn: "2"}}><b>0</b></button>
+          <button className='btn' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "0"); setConta(conta + "0")}}style={{width: "100px",height: "100px",borderRadius:"",gridColumn: "2"}}><b>0</b></button>
           
-          <button onClick ={() => {setDisplay(display + "÷"); setConta(conta + "/")}}style={{color: "white",background: "rgb(40, 38, 41)", width: "100px",height: "100px",borderRadius:"15%",fontSize:"45px",gridColumn: "3",gridRow: "5", display: "flex", alignItems: "center", justifyContent: "center",lineHeight: "1.5"}}><b>÷</b></button>
+          <button className='btnSinal' onClick ={(e) => {e.currentTarget.blur(); setDisplay(display + "÷"); setConta(conta + "/")}}style={{background: "rgb(40, 38, 41)", width: "100px",height: "100px",borderRadius:"",gridColumn: "3",gridRow: "5", display: "flex", alignItems: "center", justifyContent: "center",lineHeight: "1.5"}}><b>÷</b></button>
           
-          <button onClick ={() => {setDisplay(""); setConta("")}}style={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"45px",gridColumn: "1",gridRow: "5", display: "flex", alignItems: "center", justifyContent: "center",lineHeight: "1.5",backgroundColor:"rgb(40, 38, 41)",color: "white"}}><b>𝐂</b></button>
+          <button className='btnSinal' onClick ={(e) => {e.currentTarget.blur(); setDisplay(""); setConta("")}}style={{width: "100px",height: "100px",borderRadius:"",gridColumn: "1",gridRow: "5", display: "flex", alignItems: "center", justifyContent: "center",lineHeight: "1.5",backgroundColor:"rgb(40, 38, 41)"}}><b>𝐂</b></button>
 
-          <button onClick ={() => {setDisplay(String(eval(conta))); setConta(String(eval(conta)))}}style ={{width: "100px",height: "100px",borderRadius:"15%",fontSize:"45px",backgroundColor:"rgb(40, 38, 41)",color: "white"}}><b>=</b></button>
+          <button className='btnSinal' onClick ={(e) => {e.currentTarget.blur(); setDisplay(String(eval(conta))); setConta(String(eval(conta)))}}style ={{width: "100px",height: "100px",borderRadius:"",backgroundColor:"rgb(40, 38, 41)"}}><b>=</b></button>
         
         </div>
         </>
@@ -264,16 +294,17 @@ useEffect(() => {
           justifyItems: "center",
           flexDirection: "column",
         }}>
-          <button style ={{}} onClick={() => { {jogo ? (setNome("Jogo"), setJogo(false)) : (setNome("Contas"), setJogo(true))
+          <button className="btnBotao" style ={{}} onClick={() => { {jogo ? (setNome("Jogo"), setJogo(false)) : (setNome("Contas"), setJogo(true))
             setN1(Math.floor(Math.random() * 9) + 1);
             setN2(Math.floor(Math.random() * 9) + 1);
             setIndex(Math.floor(Math.random() * 4));
             setNivel(1);
             setResposta("");
-          }}} style ={{borderRadius:"100%",width:"100px",height:"100px",color:"black",background:"red",border: "2px solid black"}}><b>Modo:{nome}</b></button>
+          }}} style ={{display:"flex", alignItems:"center", justifyContent:"center",borderRadius:"100%",width:"120px",height:"120px",color:"black",background:"blueviolet",border: "2px solid black"}}><b>Modo:{nome}</b></button>
           </div>
         </>
       </>
+      </div>
       </div>
     )
   }

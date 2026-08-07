@@ -4,3 +4,7 @@ body {
     background-size: 101%;
     overflow: hidden;
 }
+.btnBotao.ativo {
+    transform: scale(0.8);
+    transition: 0.1s;
+}

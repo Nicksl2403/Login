@@ -3,10 +3,43 @@ body {
   padding: 0;
   overflow: hidden;
   background-size: 101%;
+  background-color: black;
 }
-.calculadora {
-  background: radial-gradient(circle, rgb(93, 50, 124), rgb(133, 57, 148));
-  background-size: 101%;
-  min-height: 100vh;
-  width: 100%;
+.btn {
+  color:black;
+  border: 2px solid transparent;
+  transition: 0.3s;
+  font-size: 30px;
+}
+.btn:hover {
+  border: 2px solid #00ff88;
+  color:indigo;
+  font-size: 50px;
+  box-shadow: 
+    0 0 8px #00ff88,
+    0 0 20px #00ff88;
+}
+.btnSinal {
+  color:white;
+  font-size: 50px;
+  border: 2px solid transparent;
+  transition: 0.3s;
+}
+.btnSinal:hover {
+  border: 2px solid #00ff88;
+  color:black;
+  font-size: 80px;
+  box-shadow: 
+    0 0 8px #00ff88,
+    0 0 20px #00ff88;
+}
+.btnBotao {
+  font-size: 15px;
+  transition: 0.3s;
+}
+.btnBotao:hover {
+  border: 2px solid #00ff88;
+  box-shadow: 
+    0 0 8px #00ff88,
+    0 0 20px #00ff88;
 }
