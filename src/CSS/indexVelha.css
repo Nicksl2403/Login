@@ -4,3 +4,10 @@ body {
   background-size: 101%;
   overflow: hidden;
 }
+.botao {
+  border: 5px solid black;
+}
+.botao:hover {
+  transition: 0.3s ease;
+  border: 5px solid red;
+}

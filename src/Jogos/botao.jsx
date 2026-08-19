@@ -6,7 +6,7 @@ import "../CSS/indexBotao.css";
 function Botao() {
   const [clicado , setClicado] = useState(false);
   const [PoderNavegador, setPoder] = useState("???"); // NOME DO PODER
-  const [cliques, setCliques] = useState(9999); // CLIQUES
+  const [cliques, setCliques] = useState(0); // CLIQUES
   const [Cooldown, setCooldown] = useState (false); // COOLDOWN DAS HABILIDADES
   const [TimerNavegador, setTimer] = useState(0); // TIMER NO NAVEGADOR PARA ATUALIZAR A EXIBIÇÃO
   const [AutoClicker, LigarAutoClicker] = useState(false);
